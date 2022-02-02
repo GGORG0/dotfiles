@@ -22,6 +22,16 @@ alias mkdir="mkdir -p"
 alias cp="cp -r"
 alias rrf="rm -rf"
 
+alias py="python3"
+alias ipy="ipython"
+
+alias .=".."
+
+alias gs="git status"
+alias gc="git commit -a -m"
+alias gp="git push"
+alias ga="git add"
+
 # alias emacs='emacsclient -c -a "emacs"'
 # alias emacsd="/usr/bin/emacs --daemon"
 
