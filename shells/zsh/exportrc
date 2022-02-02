@@ -1,0 +1,8 @@
+export NEOVIDE_MULTIGRID=1
+
+## Change your editor here
+export EDITOR='nvim'
+export VISUAL='$EDITOR'
+
+export SUDO_PROMPT="[sudo]  password for %p: "
+export PATH=$HOME/.local/bin:$PATH

@@ -1,0 +1,41 @@
+alias cat=bat
+alias nc=ncat
+# alias grep="rg"
+# alias find="fd"
+alias man="batman"
+alias tb="nc termbin.com 9999"
+
+alias ls='exa -h --icons --color=always'
+alias l='exa -lh --icons --color=always'
+alias ll=l
+alias la='exa -lah --icons --color=always'
+alias dir=ls
+
+alias cls="clear"
+alias c="clear"
+alias findstr="grep --color=auto -RHIni"
+alias zrel="omz reload"
+alias sudoe="sudoedit"
+# alias sudo="doas"
+
+alias mkdir="mkdir -p"
+alias cp="cp -r"
+alias rrf="rm -rf"
+
+# alias emacs='emacsclient -c -a "emacs"'
+# alias emacsd="/usr/bin/emacs --daemon"
+
+## Change your editor in ~/.exportrc
+alias edit="$EDITOR"
+alias vi="$EDITOR"
+alias nano="$EDITOR"
+alias vim="$EDITOR"
+
+# alias yay="sudo powerpill"
+# alias yay="sudo pacman"
+# alias pacman="powerpill"
+# alias upd="sudo pacman -Sy && sudo powerpill -Su && paru -Su"
+alias yay="paru"
+alias upd="yay -Syu"
+
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
