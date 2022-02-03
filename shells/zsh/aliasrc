@@ -24,6 +24,9 @@ alias rrf="rm -rf"
 
 alias py="python3"
 alias ipy="ipython"
+alias pip="python3 -m pip"
+
+alias v="vim"
 
 alias .=".."
 
