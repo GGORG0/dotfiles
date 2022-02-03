@@ -25,6 +25,7 @@ alias rrf="rm -rf"
 alias py="python3"
 alias ipy="ipython"
 alias pip="python3 -m pip"
+alias pipi="python3 -m pip install"
 
 alias v="vim"
 
@@ -50,5 +51,6 @@ alias vim="$EDITOR"
 # alias upd="sudo pacman -Sy && sudo powerpill -Su && paru -Su"
 alias yay="paru"
 alias upd="yay -Syu"
+alias ins="yay -S"
 
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
