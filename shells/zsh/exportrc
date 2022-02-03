@@ -6,3 +6,5 @@ export VISUAL='$EDITOR'
 
 export SUDO_PROMPT="[sudo]  password for %p: "
 export PATH=$HOME/.local/bin:$PATH
+
+export BROWSER="$(xdg-settings get default-web-browser | sed 's/.desktop//')"
