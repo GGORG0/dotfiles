@@ -81,7 +81,7 @@ zlong_ignore_cmds="vim ssh nvim ncdu bash zsh ipython nvim edit"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting tmux zlong_alert)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zlong_alert zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,14 +101,14 @@ source ~/.aliasrc
 source ~/.funcrc
 
 ## Terminal title
-case ${TERM} in
-  xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-        ;;
-  screen*)
-    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-    ;;
-esac
+# case ${TERM} in
+#   xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)
+#     PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
+#         ;;
+#   screen*)
+#     PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
+#     ;;
+# esac
 
 ## I-Beam cursor
 # echo -en "\e[5 q"

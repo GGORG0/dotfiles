@@ -17,7 +17,8 @@ RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tool
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 git clone --depth=1 https://github.com/kevinywlui/zlong_alert.zsh.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/zlong_alert
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/zsh-autosuggestions
-git clone --depth=1 https://github.com/kevinywlui/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/zsh-syntax-highlighting
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/zsh-syntax-highlighting
+git clone --depth=1 https://github.com/jeffreytse/zsh-vi-mode.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/zsh-vi-mode
 
 mv ~/.zshrc ~/.zshrc.bak
 mv ~/.p10k.zsh ~/.p10k.zsh.bak
