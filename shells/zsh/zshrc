@@ -73,8 +73,11 @@ ZSH_DISABLE_COMPFIX="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Plugin settings
+## Plugin settings
 zlong_ignore_cmds="vim ssh nvim ncdu bash zsh ipython nvim edit"
+
+# zsh-vi-mode ESC key bound to "jk"
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
