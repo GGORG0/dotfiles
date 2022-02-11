@@ -52,5 +52,6 @@ alias vim="$EDITOR"
 alias yay="paru"
 alias upd="yay -Syu"
 alias ins="yay -S"
+alias yaz="paruz"
 
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
