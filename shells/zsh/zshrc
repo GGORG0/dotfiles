@@ -76,8 +76,15 @@ ZSH_DISABLE_COMPFIX="true"
 ## Plugin settings
 zlong_ignore_cmds="vim ssh nvim ncdu bash zsh ipython nvim edit"
 
-# zsh-vi-mode ESC key bound to "jk"
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+# fix fzf
+function zvm_after_init() {
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+}
+
+function zvm_config() {
+  # zsh-vi-mode ESC key bound to "jk"
+  ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+}
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -120,9 +127,8 @@ source ~/.funcrc
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-## FZF key bindings
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/fzf/completion.zsh && source /usr/share/fzf/key-bindings.zsh
+## FZF key bindings (see plugin configuration)
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## Batpipe (better less)
 eval "$(batpipe)"
