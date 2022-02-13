@@ -40,3 +40,9 @@ macspoof() {
     sudo macchanger -p $INTERFACE
     sudo ip link set dev $INTERFACE up
 }
+
+## Reverse DNS lookup
+## Note: it doesn't work sometimes when there is no rdns
+rdns() {
+    host "$(host "$1" | grep 'has address' | awk '{print $NF}')" | awk '{print $NF}'
+}
