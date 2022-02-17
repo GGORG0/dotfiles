@@ -35,6 +35,8 @@ alias gs="git status"
 alias gc="git commit -a -m"
 alias gp="git push"
 alias ga="git add"
+alias gpu="git pull"
+alias gpura="git pull --rebase --autostash"
 
 # alias emacs='emacsclient -c -a "emacs"'
 # alias emacsd="/usr/bin/emacs --daemon"
