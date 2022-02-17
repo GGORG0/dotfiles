@@ -2,7 +2,7 @@
 
 echo "ZSH dotfile setup for ArchLinux"
 
-sudo pacman -Sy --needed --noconfirm zsh fzf bat zoxide tmux vim neovim openbsd-netcat curl wget git sudo ncat exa tar p7zip macchanger ripgrep fd || exit 1
+sudo pacman -Sy --needed --noconfirm zsh fzf bat zoxide tmux vim neovim openbsd-netcat curl wget git sudo exa tar p7zip macchanger ripgrep fd || exit 1
 if ! hash paru 2>/dev/null; then
     git clone https://aur.archlinux.org/paru-bin.git
     cd paru-bin
