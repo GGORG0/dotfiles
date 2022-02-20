@@ -74,7 +74,7 @@ ZSH_DISABLE_COMPFIX="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 ## Plugin settings
-zlong_ignore_cmds="vim ssh nvim ncdu bash zsh ipython nvim edit"
+zlong_ignore_cmds="vim ssh nvim ncdu bash zsh ipython nvim edit htop btop"
 
 # fix fzf
 function zvm_after_init() {
