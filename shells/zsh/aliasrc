@@ -17,6 +17,7 @@ alias findstr="grep --color=auto -RHIni"
 alias zrel="omz reload"
 alias sudoe="sudoedit"
 # alias sudo="doas"
+alias s="sudo"
 
 alias mkdir="mkdir -p"
 alias cp="cp -r"
