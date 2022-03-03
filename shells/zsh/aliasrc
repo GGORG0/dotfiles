@@ -29,6 +29,7 @@ alias pip="python3 -m pip"
 alias pipi="python3 -m pip install"
 
 alias v="vim"
+alias cd="z"
 
 alias .=".."
 
