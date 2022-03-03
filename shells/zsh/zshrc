@@ -93,6 +93,18 @@ function zvm_config() {
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zlong_alert zsh-vi-mode you-should-use)
 
+## Plugin checker
+for plugin ($plugins); do
+  if [[ ! -f "$ZSH/plugins/$plugin/$plugin.plugin.zsh" ]]; then
+    if [[ ! -f "$ZSH/custom/plugins/$plugin/$plugin.plugin.zsh" ]]; then
+      echo -e "\033[0;31m[ERROR] Plugin \033[1;33m$plugin\033[0;31m has not been found!"
+      echo -e " - Check your ZSH configuration"
+      echo -e " - Re-run the setup script to reinstall all the plugins"
+      echo -e "\033[0m"
+    fi
+  fi
+done
+
 source $ZSH/oh-my-zsh.sh
 
 ## User configuration
