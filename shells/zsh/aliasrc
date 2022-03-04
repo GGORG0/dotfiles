@@ -6,9 +6,9 @@ alias man="batman"
 alias tb="nc termbin.com 9999"
 
 alias ls='exa -h --icons --color=always'
-alias l='exa -lh --icons --color=always'
-alias ll=l
-alias la='exa -lah --icons --color=always'
+alias l='ls -al'
+alias ll='ls -l'
+alias la=l
 alias dir=ls
 
 alias cls="clear"
@@ -31,7 +31,7 @@ alias pipi="python3 -m pip install"
 alias v="vim"
 alias cd="z"
 
-alias .=".."
+alias .="cd .."
 
 alias gs="git status"
 alias gc="git commit -a -m"
