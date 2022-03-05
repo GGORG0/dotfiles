@@ -13,6 +13,8 @@ fi
 
 paru -S --needed --noconfirm bat-extras nerd-fonts-jetbrains-mono || exit 1
 
+mv ~/.oh-my-zsh ~/.oh-my-zsh.bak
+
 RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 git clone --depth=1 https://github.com/kevinywlui/zlong_alert.zsh.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zlong_alert
