@@ -16,8 +16,9 @@ alias c="clear"
 alias findstr="grep --color=auto -RHIni"
 alias zrel="omz reload"
 alias sudoe="sudoedit"
+alias sv="sudoedit"
 # alias sudo="doas"
-alias s="sudo"
+alias s="sudo "
 
 alias mkdir="mkdir -p"
 alias cp="cp -r"
@@ -59,3 +60,5 @@ alias ins="yay -S"
 alias yaz="paruz"
 
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+
+alias copy="xclip -in -selection clipboard"
