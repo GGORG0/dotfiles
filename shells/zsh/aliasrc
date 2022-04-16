@@ -56,7 +56,7 @@ alias vim="$EDITOR"
 # alias upd="sudo pacman -Sy && sudo powerpill -Su && paru -Su"
 alias yay="paru"
 alias upd="yay -Syu"
-alias ins="yay -S"
+alias ins="yay -S --needed"
 alias yaz="paruz"
 
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
