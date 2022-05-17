@@ -76,6 +76,8 @@ ZSH_DISABLE_COMPFIX="true"
 ## Plugin settings
 zlong_ignore_cmds="vim ssh nvim ncdu bash zsh ipython nvim edit htop btop"
 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 # fix fzf
 function zvm_after_init() {
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
