@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 export NEOVIDE_MULTIGRID=1
 
 ## Change your editor here

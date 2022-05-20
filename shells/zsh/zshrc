@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -79,22 +81,12 @@ zlong_ignore_cmds="vim ssh nvim ncdu bash zsh ipython nvim edit htop btop"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30
 
-# fix fzf
-function zvm_after_init() {
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-}
-
-function zvm_config() {
-  # zsh-vi-mode ESC key bound to "jk"
-  ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-}
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zlong_alert zsh-vi-mode you-should-use)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zlong_alert you-should-use)
 
 ## Plugin checker
 for plugin ($plugins); do
@@ -123,7 +115,6 @@ source $ZSH/oh-my-zsh.sh
 ## Config files
 source ~/.exportrc
 source ~/.aliasrc
-source ~/.funcrc
 
 ## Terminal title
 # case ${TERM} in

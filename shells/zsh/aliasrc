@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 alias cat=bat
 alias nc=ncat
 # alias grep="rg"
