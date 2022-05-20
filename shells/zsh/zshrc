@@ -133,8 +133,8 @@ source ~/.aliasrc
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-## FZF key bindings (see plugin configuration)
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+## FZF key bindings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## Batpipe (better less)
 eval "$(batpipe)"
