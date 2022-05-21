@@ -1,151 +1,206 @@
 #!/usr/bin/zsh
+# @File shells/zsh/zshrc
+# @Copy ~/.zshrc
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#########################################
+##               ~/.zshrc              ##
+##   The main ZSH configuration file   ##
+##                                     ##
+##                GGORG                ##
+##     https://gh.ggorg.tk/dotfiles    ##
+##           shells/zsh/zshrc          ##
+#########################################
+
+## If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+### EXPORTS ###
+
+## @Change your editor here
+export EDITOR='nvim'
+export VISUAL="$EDITOR"
+
+## Sudo prompt
+export SUDO_PROMPT="[sudo]  %p's password: "
+
+### HISTORY SETTINGS ###
+
+## Set the history file to ~/.zsh_history
+HISTFILE=~/.zsh_history
+
+## Set the shell history size to 1000
+HISTSIZE=1000
+
+## Set the file history size to 10000
+SAVEHIST=10000
+
+## Basically ignore duplicates
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+
+### SHELL OPTIONS ###
+
+## CD into a directory by just typing its name
+setopt autocd
+
+## Notify that a backround command has finished
+setopt notify
+
+## @Uncomment to hide EOL sign ('%')
+#PROMPT_EOL_MARK=""
+
+## Allow comments in interactive mode
+setopt interactivecomments
+
+## Enable filename expansion for property (a=b) arguments (used in dd)
+setopt magicequalsubst
+
+### KEYBINDINGS ###
+
+## Use Vim keys
+## @Comment to use normal (Emacs) keys
+bindkey -v
+
+## Exit ZSH
+function exit_zsh() { exit; }
+zle -N exit_zsh
+bindkey '^D' exit_zsh
+
+## Clear the entire backbuffer
+function clear-screen-and-scrollback() {
+  echoti civis >"$TTY"
+  printf '%b' '\e[H\e[2J' >"$TTY"
+  zle .reset-prompt
+  zle -R
+  printf '%b' '\e[3J' >"$TTY"
+  echoti cnorm >"$TTY"
+}
+zle -N clear-screen-and-scrollback
+bindkey '^L' clear-screen-and-scrollback
+
+### COMPLETION OPTIONS ###
+
+zstyle :compinstall filename '/home/ggorg/.zshrc'
+autoload -Uz compinit
+compinit
+
+### COMMON $PATH DIRECTORIES ###
+
+## ~/.bin
+if [ -d "$HOME/.bin" ]; then
+  PATH="$HOME/.bin:$PATH"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+## ~/.local/bin
+if [ -d "$HOME/.local/bin" ]; then
+  PATH="$HOME/.local/bin:$PATH"
+fi
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/$USER/.oh-my-zsh"
+## ~/Applications (a common AppImage directory)
+if [ -d "$HOME/Applications" ]; then
+  PATH="$HOME/Applications:$PATH"
+fi
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+### TERMINAL TITLE ###
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+case ${TERM} in
+xterm* | rxvt* | Eterm* | aterm | kterm | gnome* | alacritty | st | konsole* | kitty*)
+  PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
+  ;;
+*) ;;
 
-ZSH_DISABLE_COMPFIX="true"
+esac
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+### COLORED COMMANDS ###
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+## ls
+alias ls="ls --color=auto"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+## grep
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+## diff
+alias diff="diff --color=auto"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+## ip
+alias ip="ip --color=auto"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+### CONFIG FILES ###
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+## Aliases
+if [ -f "$HOME/.aliasrc" ]; then
+  source "$HOME/.aliasrc"
+fi
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+### PLUGINS ###
 
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-## Plugin settings
-zlong_ignore_cmds="vim ssh nvim ncdu bash zsh ipython nvim edit htop btop"
-
+## ZSH-Autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30
+if [ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+  source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zlong_alert you-should-use)
+## ZSH-Syntax-Highlighting
+if [ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+  source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
 
-## Plugin checker
-for plugin ($plugins); do
-  if [[ ! -f "$ZSH/plugins/$plugin/$plugin.plugin.zsh" ]]; then
-    if [[ ! -f "$ZSH/custom/plugins/$plugin/$plugin.plugin.zsh" ]]; then
-      echo -e "\033[0;31m[ERROR] Plugin \033[1;33m$plugin\033[0;31m has not been found!"
-      echo -e " - Check your ZSH configuration"
-      echo -e " - Re-run the setup script to reinstall all the plugins"
-      echo -e "\033[0m"
-    fi
-  fi
-done
+## ZSH-You-Should-Use
+if [ -f "/usr/share/zsh/plugins/zsh-you-should-use/zsh-you-should-use.zsh" ]; then
+  source "/usr/share/zsh/plugins/zsh-you-should-use/zsh-you-should-use.zsh"
+fi
 
-source $ZSH/oh-my-zsh.sh
+## ArchLinux Command Not Found
+if [ -f "/usr/share/doc/pkgfile/command-not-found.zsh" ]; then
+  source "/usr/share/doc/pkgfile/command-not-found.zsh"
+  # else
+  # function command_not_found_handler {
+  #   local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
+  #   printf 'zsh: command not found: %s\n' "$1"
+  #   local entries=(
+  #     ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"}
+  #   )
+  #   if (( ${#entries[@]} ))
+  #   then
+  #     printf "${bright}$1${reset} may be found in the following packages:\n"
+  #     local pkg
+  #     for entry in "${entries[@]}"
+  #     do
+  #       local fields=(
+  #         ${(0)entry}
+  #       )
+  #       if [[ "$pkg" != "${fields[2]}" ]]
+  #       then
+  #         printf "  ${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
+  #       fi
+  #       printf '    /%s\n' "${fields[4]}"
+  #       pkg="${fields[2]}"
+  #     done
+  #   fi
+  #   return 127
+  # }
+fi
 
-## User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-## You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-## Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-## Config files
-source ~/.exportrc
-source ~/.aliasrc
-
-## Terminal title
-# case ${TERM} in
-#   xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)
-#     PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-#         ;;
-#   screen*)
-#     PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-#     ;;
-# esac
-
-## I-Beam cursor
-# echo -en "\e[5 q"
-
-## To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-## FZF key bindings
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-## Batpipe (better less)
+## BatPipe
 eval "$(batpipe)"
 
-## ArchLinux command not found handler
-source /usr/share/doc/pkgfile/command-not-found.zsh
-
-## Completion for PMBootstrap (PostmarketOS tool)
-# autoload bashcompinit
-# bashcompinit
-# eval "$(register-python-argcomplete pmbootstrap)"
-
-## Zoxide (better cd)
+## Zoxide
 eval "$(zoxide init zsh)"
+
+## FZF
+if [ -f "$HOME/.fzf.zsh" ]; then
+  source "$HOME/.fzf.zsh"
+else
+  if [ -f "/usr/share/fzf/key-bindings.zsh"]; then
+    source "/usr/share/fzf/key-bindings.zsh"
+  fi
+  if [ -f "/usr/share/fzf/completion.zsh"]; then
+    source "/usr/share/fzf/completion.zsh"
+  fi
+fi
+
+## Starship prompt
+eval "$(starship init zsh)"

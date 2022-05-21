@@ -1,7 +1,18 @@
 #!/usr/bin/zsh
+# @File shells/zsh/aliasrc
+# @Copy ~/.aliasrc
 
-alias cat=bat
-alias nc=ncat
+###############################################
+##                 ~/.aliasrc                ##
+##   All the custom shell aliases are here   ##
+##                                           ##
+##                   GGORG                   ##
+##        https://gh.ggorg.tk/dotfiles       ##
+##             shells/zsh/aliasrc            ##
+###############################################
+
+alias cat="bat"
+alias nc="ncat"
 # alias grep="rg"
 # alias find="fd"
 alias man="batman"
@@ -10,8 +21,8 @@ alias tb="nc termbin.com 9999"
 alias ls='exa -h --icons --color=always'
 alias l='ls -al'
 alias ll='ls -l'
-alias la=l
-alias dir=ls
+alias la="l"
+alias dir="ls"
 
 alias cls="clear"
 alias c="clear"
