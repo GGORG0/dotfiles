@@ -11,6 +11,12 @@
 ##          shells/zsh/setup.sh          ##
 ###########################################
 echo -e "\e[1;33mZSH \e[1;32mdotfiles setup \e[4;33mfor ArchLinux\e[0m"
+if [ -f .installed ]; then
+    echo -e "\e[1;33m[!] Already installed!\e[0m"
+    echo -e "\e[1;33m To reinstall, remove the \e[4;34m.installed\e[0m\e[1;33m file.\e[0m"
+    exit 1
+fi
+
 echo -e "\e[1;32m[*] Installing packages...\e[0m"
 
 sudo pacman -Sy --needed --noconfirm bat bat-extras curl diffutils exa fzf git grep iproute2 ipython ncurses neovim nmap pkgfile python python-pip ripgrep starship sudo ttf-font-nerd xclip zoxide zsh zsh-autosuggestions zsh-syntax-highlighting || exit 1

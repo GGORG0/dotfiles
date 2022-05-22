@@ -1,0 +1,23 @@
+## @File shells/starship-prompt/starship.toml
+## @Copy ~/.config/starship.toml
+
+##############################################
+##         ~/.config/starship.toml          ##
+##   The main Starship configuration file   ##
+##                                          ##
+##                  GGORG                   ##
+##       https://gh.ggorg.tk/dotfiles       ##
+##   shells/starship-prompt/starship.toml   ##
+##############################################
+
+## @Requires starship
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[battery]
+disabled=true
+

@@ -1,0 +1,12 @@
+{
+  "name": "Starship",
+  "path": "shells/starship-prompt",
+  "description": "My pretty basic Starship configuration",
+  "depends": [],
+  "pkgdepends": [
+    "starship"
+  ],
+  "files": [
+    "starship.toml"
+  ]
+}

@@ -55,6 +55,13 @@ def main():
         gen_nice_header("setup.sh", os.path.join(args.path, "setup.sh"), "A dotfile installer for ArchLinux") + "\n" + \
         f'echo -e "\\e[1;33m{metadata["name"]} \\e[1;32mdotfiles setup \\e[4;33mfor ArchLinux\\e[0m"' + \
         """
+if [ -f .installed ]; then
+    echo -e "\\e[1;33m[!] Already installed!\\e[0m"
+    echo -e "\\e[1;33m To reinstall, remove the \\e[4;34m.installed\\e[0m\\e[1;33m file.\\e[0m"
+    exit 1
+fi
+""" + \
+        """
 echo -e "\\e[1;32m[*] Installing packages...\\e[0m"
 
 """ + \
