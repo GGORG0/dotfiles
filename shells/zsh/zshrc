@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
-# @File shells/zsh/zshrc
-# @Copy ~/.zshrc
+## @File shells/zsh/zshrc
+## @Copy ~/.zshrc
 
 #########################################
 ##               ~/.zshrc              ##
@@ -11,16 +11,34 @@
 ##           shells/zsh/zshrc          ##
 #########################################
 
+## @Requires zsh
+
 ## If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+### LOCAL FUNCTIONS ###
+
+file_not_found_error() {
+  echo -e "\e[1;31mERROR\e[0m: \e[4;34m$1\e[0;31m not found\e[0m"
+}
+
+source_if_present() {
+  if [ -f "$1" ]; then
+    source "$1"
+  else
+    file_not_found_error "$1"
+  fi
+}
 
 ### EXPORTS ###
 
 ## @Change your editor here
+## @Requires neovim
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
 
 ## Sudo prompt
+## @Requires sudo
 export SUDO_PROMPT="[sudo]  %p's password: "
 
 ### HISTORY SETTINGS ###
@@ -104,7 +122,7 @@ fi
 ### TERMINAL TITLE ###
 
 case ${TERM} in
-xterm* | rxvt* | Eterm* | aterm | kterm | gnome* | alacritty | st | konsole* | kitty*)
+xterm* | rxvt* | Eterm* | aterm | kterm | gnome* | alacritty | st | konsole*)
   PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
   ;;
 *) ;;
@@ -117,14 +135,17 @@ esac
 alias ls="ls --color=auto"
 
 ## grep
+## @Requires grep
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
 ## diff
+## @Requires diffutils
 alias diff="diff --color=auto"
 
 ## ip
+## @Requires iproute2
 alias ip="ip --color=auto"
 
 ### CONFIG FILES ###
@@ -132,75 +153,49 @@ alias ip="ip --color=auto"
 ## Aliases
 if [ -f "$HOME/.aliasrc" ]; then
   source "$HOME/.aliasrc"
+else
+  file_not_found_error "$HOME/.aliasrc"
 fi
 
 ### PLUGINS ###
 
 ## ZSH-Autosuggestions
+## @Requires zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30
-if [ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-  source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-fi
+source_if_present "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 ## ZSH-Syntax-Highlighting
-if [ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
-  source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
+## @Requires zsh-syntax-highlighting
+source_if_present "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 ## ZSH-You-Should-Use
-if [ -f "/usr/share/zsh/plugins/zsh-you-should-use/zsh-you-should-use.zsh" ]; then
-  source "/usr/share/zsh/plugins/zsh-you-should-use/zsh-you-should-use.zsh"
-fi
+## @Requires aur:zsh-you-should-use
+source_if_present "/usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
 
 ## ArchLinux Command Not Found
-if [ -f "/usr/share/doc/pkgfile/command-not-found.zsh" ]; then
-  source "/usr/share/doc/pkgfile/command-not-found.zsh"
-  # else
-  # function command_not_found_handler {
-  #   local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
-  #   printf 'zsh: command not found: %s\n' "$1"
-  #   local entries=(
-  #     ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"}
-  #   )
-  #   if (( ${#entries[@]} ))
-  #   then
-  #     printf "${bright}$1${reset} may be found in the following packages:\n"
-  #     local pkg
-  #     for entry in "${entries[@]}"
-  #     do
-  #       local fields=(
-  #         ${(0)entry}
-  #       )
-  #       if [[ "$pkg" != "${fields[2]}" ]]
-  #       then
-  #         printf "  ${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
-  #       fi
-  #       printf '    /%s\n' "${fields[4]}"
-  #       pkg="${fields[2]}"
-  #     done
-  #   fi
-  #   return 127
-  # }
-fi
+## @Requires pkgfile
+source_if_present "/usr/share/doc/pkgfile/command-not-found.zsh"
 
 ## BatPipe
+## @Requires bat-extras
 eval "$(batpipe)"
 
 ## Zoxide
+## @Requires zoxide
 eval "$(zoxide init zsh)"
 
 ## FZF
+## @Requires fzf
 if [ -f "$HOME/.fzf.zsh" ]; then
   source "$HOME/.fzf.zsh"
 else
-  if [ -f "/usr/share/fzf/key-bindings.zsh"]; then
-    source "/usr/share/fzf/key-bindings.zsh"
-  fi
-  if [ -f "/usr/share/fzf/completion.zsh"]; then
-    source "/usr/share/fzf/completion.zsh"
-  fi
+  source_if_present "/usr/share/fzf/key-bindings.zsh"
+  source_if_present "/usr/share/fzf/completion.zsh"
 fi
 
 ## Starship prompt
+## @Requires starship
+## @Requires ttf-font-nerd
+## @Needs shells/starship-prompt
 eval "$(starship init zsh)"

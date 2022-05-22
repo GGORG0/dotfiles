@@ -1,0 +1,42 @@
+{
+  "name": "ZSH",
+  "path": "shells/zsh",
+  "description": "My ZSH configuration without any plugin manager. Indludes some plugins and the starship prompt.",
+  "depends": [
+    "shells/starship-prompt"
+  ],
+  "pkgdepends": [
+    "aur:paru",
+    "aur:paruz",
+    "aur:zsh-you-should-use",
+    "bat",
+    "bat-extras",
+    "curl",
+    "diffutils",
+    "exa",
+    "fzf",
+    "git",
+    "grep",
+    "iproute2",
+    "ipython",
+    "ncurses",
+    "neovim",
+    "nmap",
+    "pkgfile",
+    "python",
+    "python-pip",
+    "ripgrep",
+    "starship",
+    "sudo",
+    "ttf-font-nerd",
+    "xclip",
+    "zoxide",
+    "zsh",
+    "zsh-autosuggestions",
+    "zsh-syntax-highlighting"
+  ],
+  "files": [
+    "aliasrc",
+    "zshrc"
+  ]
+}

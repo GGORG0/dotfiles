@@ -1,7 +1,7 @@
 # ZSH
 
-My ZSH configuration uses Oh-My-Zsh with several plugins and the powerlevel10k prompt.
+My ZSH configuration without any plugin manager. Indludes some plugins and the starship prompt.
 
 ## Setup on Arch
 
-Clone this repo and run `setup.sh`
+Clone this repo and run [setup.sh](setup.sh).

@@ -37,7 +37,7 @@ def gen_nice_header(destfile: str, file: str, desc: str):
 
 
 def gen_machine_header(destfile: str, file: str):
-    return f"# @File {file}\n# @Copy {destfile}"
+    return f"## @File {file}\n## @Copy {destfile}"
 
 
 def main():
