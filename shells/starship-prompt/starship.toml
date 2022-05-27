@@ -19,5 +19,12 @@
 add_newline = true
 
 [battery]
-disabled=true
+disabled = true
+
+[sudo]
+disabled = false
+
+[status]
+format = "[$symbol $status]($style) "
+disabled = false
 
