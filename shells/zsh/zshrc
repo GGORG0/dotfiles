@@ -98,7 +98,7 @@ bindkey '^L' clear-screen-and-scrollback
 
 ### COMPLETION OPTIONS ###
 
-zstyle :compinstall filename '/home/ggorg/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
