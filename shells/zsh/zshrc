@@ -117,7 +117,7 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 ## yarn global bin
-if ! command -v yarn &> /dev/null; then
+if command -v yarn &> /dev/null; then
   if [ -d "$(yarn global bin)" ]; then
     PATH="$(yarn global bin):$PATH"
   fi
