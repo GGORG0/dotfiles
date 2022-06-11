@@ -25,6 +25,8 @@ file_not_found_error() {
 source_if_present() {
   if [ -f "$1" ]; then
     source "$1"
+  elif [ -f "$2" ]; then
+    source "$2"
   else
     file_not_found_error "$1"
   fi
@@ -112,6 +114,13 @@ fi
 ## ~/.local/bin
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
+fi
+
+## yarn global bin
+if ! command -v yarn &> /dev/null; then
+  if [ -d "$(yarn global bin)" ]; then
+    PATH="$(yarn global bin):$PATH"
+  fi
 fi
 
 ## ~/Applications (a common AppImage directory)
