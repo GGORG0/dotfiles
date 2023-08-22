@@ -1,5 +1,13 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
+;; @Requires git
+;; @Requires emacs
+;; @Requires ripgrep
+;; @Requires findutils
+;; @Requires fd
+
+;; Run `doom doctor` to ensure all other dependencies are installed!
+
 ;; This file controls what Doom modules are enabled and what order they load
 ;; in. Remember to run 'doom sync' after modifying it!
 

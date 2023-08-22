@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-repo_regexp='## @Requires ((?!aur:)\S*)'
-aur_regexp='## @Requires ((?:aur:)\S*)'
+repo_regexp='[#;\/]{1,2} @Requires ((?!aur:)\S*)'
+aur_regexp='[#;\/]{1,2} @Requires ((?:aur:)\S*)'
 
 get_matches() {
     grep -hrxP "$1" $2 | sort -u | awk '{print $NF}'
