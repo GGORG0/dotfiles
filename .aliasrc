@@ -1,0 +1,92 @@
+#!/usr/bin/zsh
+
+## Bat is a better cat with syntax highlighting
+## @Requires bat
+alias cat="bat"
+## @Requires bat-extras
+alias man="batman"
+
+## Exa is a better ls
+## @Requires exa
+alias ls='exa -h --icons --color=always'
+alias l='ls -al'
+alias ll='ls -l'
+alias la="l"
+alias dir="ls"
+
+## Just some clear aliases
+## Did you know CTRL+L clears the screen?
+## @Requires ncurses
+alias cls="clear"
+alias c="clear"
+
+## Ripgrep is a fast tool to search for strings in files recursively
+## @Requires ripgrep
+alias findstr="rg"
+#alias findstr="grep -RHIni"
+
+## Aliases for cd ..
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+## Useful stuff
+alias mkdir="mkdir -p"
+alias cp="cp -r"
+alias rrf="rm -rf"
+alias du="du -h"
+
+## Python aliases
+## @Requires python
+alias py="python3"
+## @Requires ipython
+alias ipy="ipython"
+## @Requires python-pip
+alias pip="python3 -m pip"
+alias pipi="python3 -m pip install"
+
+## Sudo aliases
+## @Requires sudo
+alias sudo="sudo " ## Make sudo expand aliases
+alias s="sudo"
+alias sudoe="sudoedit"
+
+## Termbin, as the name suggests, is a terminal pastebin
+## @Requires gnu-netcat
+alias tb="nc termbin.com 9999"
+
+## Just git stuff
+## @Requires git
+alias g="git"
+alias gs="git status"
+alias gc="git commit -a"
+alias gps="git push"
+alias ga="git add"
+alias gpu="git pull"
+## Git bare repo for dotfiles
+alias confgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+## Editor aliases
+## Change your editor in ~/.zshrc
+alias edit="$EDITOR"
+alias vi="$EDITOR"
+alias nano="$EDITOR"
+alias vim="$EDITOR"
+alias v="$EDITOR"
+alias emacs="$EDITOR"
+
+## Paru is a better AUR helper
+## @Requires aur:paru
+alias yay="paru"
+alias upd="paru -Syu"
+alias ins="paru -S --needed"
+
+## Quickly search for packages using fzf
+## @Requires aur:paruz
+alias yaz="paruz"
+
+## I never remember how to copy files using xclip
+## @Requires xclip
+alias x-copy="xclip -in -selection clipboard"
+alias x-paste="xclip -out -selection clipboard"
