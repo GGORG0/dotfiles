@@ -18,3 +18,4 @@ After that, you should be able to use `confgit` like the normal `git` program to
 - ZSH
 - Starship prompt
 - Doom Emacs
+- Waybar

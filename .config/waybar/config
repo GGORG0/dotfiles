@@ -1,0 +1,130 @@
+// -*- mode: jsonc; -*-
+{
+    // --- GENERAL ---
+    "layer": "top",
+    "position": "top",
+
+
+    // --- LEFT MODULES ---
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+
+    "hyprland/workspaces": {
+         "disable-scroll": true,
+         "sort-by-name": true,
+         "format": " {icon} ",
+         "format-icons": {
+             "special": "",
+             "active": "",
+             "default": "",
+         },
+        "show-special": true,
+     },
+
+
+    // --- CENTER MODULES ---
+    "modules-center": ["clock"],
+
+    "clock": {
+        "interval": 1,
+        "format": " {:%H:%M:%S %d %b}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "on-click-right": "mode",
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+    },
+
+
+    // --- RIGHT MODULES ---
+    "modules-right": ["network", "pulseaudio", "cpu", "memory", "temperature", "backlight", "battery", "tray", "custom/lock", "custom/power"],
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr} ",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠"
+    },
+
+    "pulseaudio": { // TODO: replace with wireplumber
+        "format":                 "{icon} {volume}% {format_source}",
+        "format-bluetooth":       "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted":           " {format_source}",
+        "format-source":          " {volume}%",
+        "format-source-muted":    "",
+        "format-icons": {
+            "headphone":  "",
+            "hands-free": "",
+            "headset":    "",
+            "phone":      "",
+            "portable":   "",
+            "car":        "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": "{usage}% ",
+    },
+
+    "memory": {
+        "interval": 2,
+        "format": "{}% "
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C "
+    },
+
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    // ---
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+
+    // ---
+
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown",
+        "format": "",
+    },
+
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "wlogout &",
+        "format": "⏻"
+    }
+}
