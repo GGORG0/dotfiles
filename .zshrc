@@ -7,7 +7,7 @@
 ## Show the prompt ASAP while the shell is still loading
 ## @Requires starship
 ## @Requires ttf-font-nerd
-starship prompt
+starship prompt | sed -e 's/%{//g' -e 's/%}//g'
 
 ### LOCAL FUNCTIONS ###
 
@@ -78,12 +78,8 @@ bindkey '^D' exit_zsh
 
 ## Clear the entire backbuffer
 function clear-screen-and-scrollback() {
-  echoti civis >"$TTY"
-  printf '%b' '\e[H\e[2J' >"$TTY"
-  zle .reset-prompt
-  zle -R
-  printf '%b' '\e[3J' >"$TTY"
-  echoti cnorm >"$TTY"
+  clear && printf '\e[3J'
+  zle && zle .reset-prompt && zle -R
 }
 zle -N clear-screen-and-scrollback
 bindkey '^L' clear-screen-and-scrollback
