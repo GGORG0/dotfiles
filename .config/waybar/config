@@ -50,6 +50,7 @@
 
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr}\n{essid} on {frequency}GHz",
         "format-ethernet": "{ipaddr} ",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP) ",
