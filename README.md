@@ -19,3 +19,5 @@ After that, you should be able to use `confgit` like the normal `git` program to
 - Starship prompt
 - Doom Emacs
 - Waybar
+- Dunst
+- Rofi
