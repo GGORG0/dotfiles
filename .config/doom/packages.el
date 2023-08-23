@@ -56,3 +56,6 @@
 ;; GitHub Copilot
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+
+;; Catppuccin theme
+(package! catppuccin-theme)

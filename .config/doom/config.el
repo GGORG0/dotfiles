@@ -37,7 +37,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'catppuccin)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -85,17 +85,6 @@
 ;; (+global-word-wrap-mode +1)
 
 
-;; Maximize window on startup
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-
-;; Keybinds
-;; (map! :leader
-;;       :desc "Toggle line comment"
-;;       "c l" #'comment-set-column)
-
-
 ;; Discord rich presence
 (defun elcord-buffer-details-format-custom ()
   (format "Editing %s in %s" (buffer-name) (doom-project-name)))
@@ -110,13 +99,6 @@
 
 ;; GitHub Copilot
 ;; accept completion from copilot and fallback to company
-;; (use-package! copilot
-;;   :hook (prog-mode . copilot-mode)
-;;   :bind (:map copilot-completion-map
-;;               ("<tab>" . 'copilot-accept-completion)
-;;               ("TAB" . 'copilot-accept-completion)
-;;               ("C-TAB" . 'copilot-accept-completion-by-word)
-;;               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
 (use-package! copilot
   :hook (prog-mode . copilot-mode))
