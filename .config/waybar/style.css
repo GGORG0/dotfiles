@@ -21,6 +21,7 @@
 #temperature,
 #backlight,
 #battery,
+#custom-dunst,
 #tray,
 #custom-lock,
 #custom-power {
@@ -99,8 +100,6 @@
 }
 
 #battery {
-  margin-right: 1rem;
-  border-radius: 0px 1rem 1rem 0px;
   color: @green;
 }
 
@@ -110,6 +109,12 @@
 
 #battery.warning:not(.charging) {
   color: @red;
+}
+
+#custom-dunst {
+  margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+  color: @sapphire;
 }
 
 /*---*/
