@@ -1,7 +1,7 @@
 // https://github.com/catppuccin/rofi/blob/main/basic/.config/rofi/config.rasi
 
 configuration {
-    modi: "run,drun,window";
+    modi: "run,drun";
     icon-theme: "Papirus";
     show-icons: true;
     terminal: "kitty";
