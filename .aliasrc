@@ -90,3 +90,9 @@ alias yaz="paruz"
 ## @Requires xclip
 alias x-copy="xclip -in -selection clipboard"
 alias x-paste="xclip -out -selection clipboard"
+
+## Kitty-specific aliases
+if [ "$TERM" = "xterm-kitty" ]; then
+    alias ssh="kitty +kitten ssh"
+    alias icat="kitty +kitten icat"
+fi
