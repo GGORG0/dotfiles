@@ -131,7 +131,7 @@
 
     "custom/power": {
         "tooltip": false,
-        "on-click": "wlogout &",
+        "on-click": "~/.config/rofi/scripts/power.sh",
         "format": "⏻"
     }
 }
