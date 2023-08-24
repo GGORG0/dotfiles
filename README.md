@@ -21,3 +21,5 @@ After that, you should be able to use `confgit` like the normal `git` program to
 - Waybar
 - Dunst
 - Rofi
+- Swaylock
+- Swayidle
