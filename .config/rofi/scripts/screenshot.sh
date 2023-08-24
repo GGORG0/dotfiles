@@ -55,6 +55,7 @@ shotarea() {
 options="$screen\n$area\n$window\n$infive\n$inten"
 
 chosen="$(echo -e "$options" | $rofi_command -p 'Take A Shot' -dmenu -selected-row 0)"
+sleep 0.75
 case $chosen in
     $screen)
         shotnow
