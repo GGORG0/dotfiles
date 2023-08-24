@@ -9,15 +9,12 @@
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
 
     "hyprland/workspaces": {
-         "disable-scroll": true,
-         "sort-by-name": true,
-         "format": " {icon} ",
-         "format-icons": {
-             "special": "",
-             "active": "",
-             "default": "",
-         },
+        "sort-by-name": true,
+        "format": "{id}",
         "show-special": true,
+        "persistent_workspaces": {
+            "*": 10
+        }
      },
 
 
@@ -46,7 +43,7 @@
 
 
     // --- RIGHT MODULES ---
-    "modules-right": ["network", "pulseaudio", "cpu", "memory", "temperature", "backlight", "battery", "custom/dunst", "tray", "custom/lock", "custom/power"],
+    "modules-right": ["network", "pulseaudio", "cpu", "memory", "temperature", "backlight", "battery", "custom/updates", "custom/dunst", "tray", "custom/lock", "custom/power"],
 
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -54,15 +51,16 @@
         "format-ethernet": "{ipaddr} ",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "nm-connection-editor"
     },
 
     "pulseaudio": { // TODO: replace with wireplumber
-        "format":                 "{icon} {volume}% {format_source}",
-        "format-bluetooth":       "{icon} {volume}% {format_source}",
+        "format":                 "{volume}% {icon} {format_source}",
+        "format-bluetooth":       "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted":           " {format_source}",
-        "format-source":          " {volume}%",
+        "format-source":          "{volume}% ",
         "format-source-muted":    "",
         "format-icons": {
             "headphone":  "",
@@ -79,16 +77,20 @@
     "cpu": {
         "interval": 2,
         "format": "{usage}% ",
+        "on-click": "kitty htop"
     },
 
     "memory": {
         "interval": 2,
-        "format": "{}% "
+        "format": "{}% ",
+        "on-click": "kitty htop"
     },
 
     "temperature": {
+        "interval": 10,
         "critical-threshold": 80,
-        "format": "{temperatureC}°C "
+        "format": "{temperatureC}°C ",
+        "on-click": "kitty htop"
     },
 
     "backlight": {
@@ -97,6 +99,7 @@
     },
 
     "battery": {
+        "interval": 30,
         "states": {
             "warning": 30,
             "critical": 15
@@ -105,13 +108,23 @@
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{timeTo}\n{power} W"
+    },
+
+    "custom/updates": {
+        "interval": 3600, // every hour
+        "exec": "~/.config/waybar/scripts/get_updates.sh",
+        "return-type": "json",
+        "exec-if": "exit 0",
+        "on-click": "kitty sh -c ~/.config/waybar/scripts/update.sh",
+        "signal": 8,
     },
 
     "custom/dunst": {
         "exec": "~/.config/waybar/scripts/dunst.sh",
+        "return-type": "json",
         "on-click": "dunstctl set-paused toggle",
-        "restart-interval": 1,
     },
 
     // ---
