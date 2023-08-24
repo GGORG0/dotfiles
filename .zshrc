@@ -25,17 +25,6 @@ source_if_present() {
   fi
 }
 
-### EXPORTS ###
-
-## Default editor
-## @Requires neovim
-export EDITOR='emacsclient -c -a ""'
-export VISUAL="$EDITOR"
-
-## Sudo prompt
-## @Requires sudo
-export SUDO_PROMPT="[sudo]  %p's password: "
-
 ### HISTORY SETTINGS ###
 
 ## Set the history file to ~/.zsh_history
@@ -90,46 +79,23 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
-### COMMON $PATH DIRECTORIES ###
-
-export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/Applications:$PATH"
-export PATH="$PATH:$HOME/.config/emacs/bin/"
-export PATH="$HOME/.cargo/bin:$PATH"
-
-## yarn's global bin
-if command -v yarn &> /dev/null; then
-  if [ -d "$(yarn global bin)" ]; then
-    export PATH="$(yarn global bin):$PATH"
-  fi
-fi
-
-## Android SDK
-if [ -d "$HOME/Android/Sdk" ]; then
-  export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-  export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
-  export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
-fi
-
 ### TERMINAL TITLE ###
 
-function set_win_title_prompt(){
-  # echo -ne "\033]0;${PWD/#$HOME/~}\007"
-  echo -ne "\033]0;$USER in ${PWD/#$HOME/~}\007"
-}
-function set_win_title_command(){
-  case "${1%% *}" in
-    mosh|ssh)
-      echo -ne "\033]0;$(python3 /home/ggorg/.sshtool.py "$1")\007"
-      ;;
-    *)
-      echo -ne "\033]0;'$1' in ${PWD/#$HOME/~}\007"
-      ;;
-  esac
-}
-precmd_functions+=(set_win_title_prompt)
-preexec_functions+=(set_win_title_command)
+if [ "$TERM" != "xterm-kitty" ]; then
+  function set_win_title_prompt(){
+    # echo -ne "\033]0;${PWD/#$HOME/~}\007"
+    echo -ne "\033]0;${PWD/#$HOME/~}\007"
+  }
+  function set_win_title_command(){
+    case "${1%% *}" in
+      *)
+        echo -ne "\033]0;'$1'\007"
+        ;;
+    esac
+  }
+  precmd_functions+=(set_win_title_prompt)
+  preexec_functions+=(set_win_title_command)
+fi
 
 ### COLORED COMMANDS ###
 
