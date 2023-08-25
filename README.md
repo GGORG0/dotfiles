@@ -2,6 +2,8 @@
 
 My dotfiles (program configuration files) are stored in a Git bare repository.
 
+![image](https://github.com/GGORG0/dotfiles/assets/51029895/af22ec16-1d5e-43a8-b0d6-16021817da90)
+
 ## Installation
 
 To get them, run:
