@@ -28,3 +28,4 @@ You will also probably want to customize the dotfiles a lot, so you may not even
 - Rofi
 - Swaylock
 - Swayidle
+- Kitty
