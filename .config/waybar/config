@@ -100,16 +100,16 @@
 
     "battery": {
         "interval": 60,
+        "full-at": 95,
         "states": {
             "warning": 30,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% 󰂄",
         "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""],
-        "tooltip-format": "{timeTo}\n{power} W"
+        "format-icons": ["󱃍", "󱃍", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰁹"],
+        "tooltip-format": "{capacity}%\n{timeTo}\n{power} W"
     },
 
     "custom/updates": {
