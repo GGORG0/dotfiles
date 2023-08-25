@@ -117,6 +117,7 @@
         "exec": "~/.config/waybar/scripts/get_updates.sh",
         "return-type": "json",
         "exec-if": "exit 0",
+        "exec-on-event": false,
         "on-click": "kitty sh -c ~/.config/waybar/scripts/update.sh",
         "signal": 8,
     },
