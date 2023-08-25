@@ -75,19 +75,19 @@
     },
 
     "cpu": {
-        "interval": 2,
+        "interval": 10,
         "format": "{usage}% ",
         "on-click": "kitty htop"
     },
 
     "memory": {
-        "interval": 2,
+        "interval": 10,
         "format": "{}% ",
         "on-click": "kitty htop"
     },
 
     "temperature": {
-        "interval": 10,
+        "interval": 30,
         "critical-threshold": 80,
         "format": "{temperatureC}°C ",
         "on-click": "kitty htop"
@@ -99,7 +99,7 @@
     },
 
     "battery": {
-        "interval": 30,
+        "interval": 60,
         "states": {
             "warning": 30,
             "critical": 15
