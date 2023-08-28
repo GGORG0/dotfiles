@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 rofi_command="rofi"
+grimblast="grimblast --notify --cursor --freeze"
 
 # Buttons
 screen="󰍹 Capture screen"
@@ -8,11 +9,6 @@ area="󰩬 Capture area"
 window=" Capture active window"
 infive="󱑀 Take in 3s"
 inten="󱑇 Take in 10s"
-
-# Notify and view screenshot
-notify() {
-    dunstify -u low --replace=699 "Copied to clipboard."
-}
 
 # countdown
 countdown() {
@@ -25,30 +21,25 @@ countdown() {
 
 # take shots
 shotnow() {
-    grimblast copy screen
-    notify
+    $grimblast copysave screen
 }
 
 shot5() {
     countdown 3
-    grimblast copy screen
-    notify
+    $grimblast copysave screen
 }
 
 shot10() {
     countdown 10
-    grimblast copy screen
-    notify
+    $grimblast copysave screen
 }
 
 shotwin() {
-    grimblast copy active
-    notify
+    $grimblast copysave active
 }
 
 shotarea() {
-    grimblast copy area
-    notify
+    $grimblast copysave area
 }
 
 # Variable passed to rofi
