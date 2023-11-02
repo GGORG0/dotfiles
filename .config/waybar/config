@@ -43,7 +43,7 @@
 
 
     // --- RIGHT MODULES ---
-    "modules-right": ["network", "pulseaudio", "cpu", "memory", "temperature", "backlight", "battery", "custom/updates", "custom/dunst", "tray", "custom/lock", "custom/power"],
+    "modules-right": ["network", "idle_inhibitor", "pulseaudio", "cpu", "memory", "temperature", "backlight", "battery", "custom/updates", "custom/dunst", "tray", "custom/lock", "custom/power"],
 
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -53,6 +53,14 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "on-click": "nm-connection-editor"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
 
     "pulseaudio": { // TODO: replace with wireplumber

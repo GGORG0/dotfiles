@@ -15,6 +15,7 @@
 #window,
 #clock,
 #network,
+#idle_inhibitor,
 #pulseaudio,
 #cpu,
 #memory,
@@ -88,6 +89,14 @@
   color: @teal;
   border-radius: 1rem 0px 0px 1rem;
   margin-left: 1rem;
+}
+
+#idle_inhibitor.deactivated {
+  color: @peach;
+}
+
+#idle_inhibitor.activated {
+  color: @green;
 }
 
 #pulseaudio {
