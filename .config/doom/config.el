@@ -119,8 +119,14 @@
       :map copilot-completion-map
       "C-<tab>" #'copilot-accept-completion-by-word)
 
+
 ;; Frame transparency
 
 (set-frame-parameter nil 'alpha-background 75) ; For current frame
 (add-to-list 'default-frame-alist '(alpha-background . 75)) ; For all new frames henceforth
 
+
+;; LSP Inline type hints
+(after! lsp-mode
+ (setq lsp-inlay-hint-enable t)
+ (lsp-inlay-hints-mode))

@@ -59,3 +59,6 @@
 
 ;; Catppuccin theme
 (package! catppuccin-theme)
+
+;; ElKowar's Wacky Widgets' yuck language
+(package! yuck-mode)
