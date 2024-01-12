@@ -1,4 +1,6 @@
-# GGORG's dotfiles
+# GGORG's dotfiles (outdated)
+
+**This repo is outdated. I've switched to NixOS from Arch. You can find my NixOS configuration here: https://github.com/GGORG0/nix-config**
 
 My dotfiles (program configuration files) are stored in a Git bare repository.
 
